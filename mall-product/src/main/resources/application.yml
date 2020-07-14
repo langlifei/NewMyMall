@@ -1,0 +1,9 @@
+server:
+  port: 8083 #运行端口号
+spring:
+  application:
+    name: mall-product #服务名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://langlifei:123456@localhost:8081/eureka/ #配置注册中心地址
