@@ -5,6 +5,7 @@
 
     <groupId>com.znuel</groupId>
     <artifactId>mymall</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>mymall</name>
     <description>Demo project for Spring Boot</description>
@@ -26,6 +27,7 @@
         <module>mall-member</module>
         <module>mall-product</module>
         <module>mall-search</module>
+        <module>mall-cache</module>
     </modules>
 
     <dependencies>
