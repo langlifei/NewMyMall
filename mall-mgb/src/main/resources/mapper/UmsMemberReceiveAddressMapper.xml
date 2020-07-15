@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.UmsMemberReceiveAddressMapper" >
+  <resultMap id="BaseResultMap" type="model.UmsMemberReceiveAddress" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="member_id" property="member_id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phone_number" property="phone_number" jdbcType="VARCHAR" />
+    <result column="default_status" property="default_status" jdbcType="INTEGER" />
+    <result column="post_code" property="post_code" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="detail_address" property="detail_address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, member_id, name, phone_number, default_status, post_code, province, city, region, 
+    detail_address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ums_member_receive_address
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ums_member_receive_address
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="model.UmsMemberReceiveAddress" >
+    insert into ums_member_receive_address (id, member_id, name, 
+      phone_number, default_status, post_code, 
+      province, city, region, 
+      detail_address)
+    values (#{id,jdbcType=BIGINT}, #{member_id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{phone_number,jdbcType=VARCHAR}, #{default_status,jdbcType=INTEGER}, #{post_code,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, 
+      #{detail_address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.UmsMemberReceiveAddress" >
+    insert into ums_member_receive_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="member_id != null" >
+        member_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone_number != null" >
+        phone_number,
+      </if>
+      <if test="default_status != null" >
+        default_status,
+      </if>
+      <if test="post_code != null" >
+        post_code,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="region != null" >
+        region,
+      </if>
+      <if test="detail_address != null" >
+        detail_address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="member_id != null" >
+        #{member_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone_number != null" >
+        #{phone_number,jdbcType=VARCHAR},
+      </if>
+      <if test="default_status != null" >
+        #{default_status,jdbcType=INTEGER},
+      </if>
+      <if test="post_code != null" >
+        #{post_code,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="detail_address != null" >
+        #{detail_address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.UmsMemberReceiveAddress" >
+    update ums_member_receive_address
+    <set >
+      <if test="member_id != null" >
+        member_id = #{member_id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone_number != null" >
+        phone_number = #{phone_number,jdbcType=VARCHAR},
+      </if>
+      <if test="default_status != null" >
+        default_status = #{default_status,jdbcType=INTEGER},
+      </if>
+      <if test="post_code != null" >
+        post_code = #{post_code,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="detail_address != null" >
+        detail_address = #{detail_address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.UmsMemberReceiveAddress" >
+    update ums_member_receive_address
+    set member_id = #{member_id,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      phone_number = #{phone_number,jdbcType=VARCHAR},
+      default_status = #{default_status,jdbcType=INTEGER},
+      post_code = #{post_code,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      detail_address = #{detail_address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

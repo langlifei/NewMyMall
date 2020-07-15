@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.PmsSkuStockMapper" >
+  <resultMap id="BaseResultMap" type="model.PmsSkuStock" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="product_id" property="product_id" jdbcType="BIGINT" />
+    <result column="sku_code" property="sku_code" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="low_stock" property="low_stock" jdbcType="INTEGER" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="sale" property="sale" jdbcType="INTEGER" />
+    <result column="promotion_price" property="promotion_price" jdbcType="DECIMAL" />
+    <result column="lock_stock" property="lock_stock" jdbcType="INTEGER" />
+    <result column="sp_data" property="sp_data" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock, 
+    sp_data
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pms_sku_stock
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pms_sku_stock
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="model.PmsSkuStock" >
+    insert into pms_sku_stock (id, product_id, sku_code, 
+      price, stock, low_stock, 
+      pic, sale, promotion_price, 
+      lock_stock, sp_data)
+    values (#{id,jdbcType=BIGINT}, #{product_id,jdbcType=BIGINT}, #{sku_code,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{low_stock,jdbcType=INTEGER}, 
+      #{pic,jdbcType=VARCHAR}, #{sale,jdbcType=INTEGER}, #{promotion_price,jdbcType=DECIMAL}, 
+      #{lock_stock,jdbcType=INTEGER}, #{sp_data,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.PmsSkuStock" >
+    insert into pms_sku_stock
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="product_id != null" >
+        product_id,
+      </if>
+      <if test="sku_code != null" >
+        sku_code,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="low_stock != null" >
+        low_stock,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="sale != null" >
+        sale,
+      </if>
+      <if test="promotion_price != null" >
+        promotion_price,
+      </if>
+      <if test="lock_stock != null" >
+        lock_stock,
+      </if>
+      <if test="sp_data != null" >
+        sp_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="product_id != null" >
+        #{product_id,jdbcType=BIGINT},
+      </if>
+      <if test="sku_code != null" >
+        #{sku_code,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="low_stock != null" >
+        #{low_stock,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sale != null" >
+        #{sale,jdbcType=INTEGER},
+      </if>
+      <if test="promotion_price != null" >
+        #{promotion_price,jdbcType=DECIMAL},
+      </if>
+      <if test="lock_stock != null" >
+        #{lock_stock,jdbcType=INTEGER},
+      </if>
+      <if test="sp_data != null" >
+        #{sp_data,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.PmsSkuStock" >
+    update pms_sku_stock
+    <set >
+      <if test="product_id != null" >
+        product_id = #{product_id,jdbcType=BIGINT},
+      </if>
+      <if test="sku_code != null" >
+        sku_code = #{sku_code,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="low_stock != null" >
+        low_stock = #{low_stock,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="sale != null" >
+        sale = #{sale,jdbcType=INTEGER},
+      </if>
+      <if test="promotion_price != null" >
+        promotion_price = #{promotion_price,jdbcType=DECIMAL},
+      </if>
+      <if test="lock_stock != null" >
+        lock_stock = #{lock_stock,jdbcType=INTEGER},
+      </if>
+      <if test="sp_data != null" >
+        sp_data = #{sp_data,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.PmsSkuStock" >
+    update pms_sku_stock
+    set product_id = #{product_id,jdbcType=BIGINT},
+      sku_code = #{sku_code,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      stock = #{stock,jdbcType=INTEGER},
+      low_stock = #{low_stock,jdbcType=INTEGER},
+      pic = #{pic,jdbcType=VARCHAR},
+      sale = #{sale,jdbcType=INTEGER},
+      promotion_price = #{promotion_price,jdbcType=DECIMAL},
+      lock_stock = #{lock_stock,jdbcType=INTEGER},
+      sp_data = #{sp_data,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.PmsSeckillProductMapper" >
+  <resultMap id="BaseResultMap" type="model.PmsSeckillProduct" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="product_id" property="product_id" jdbcType="BIGINT" />
+    <result column="seckill_price" property="seckill_price" jdbcType="DECIMAL" />
+    <result column="seckill_stock" property="seckill_stock" jdbcType="INTEGER" />
+    <result column="start_date" property="start_date" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="end_date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_id, seckill_price, seckill_stock, start_date, end_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from pms_seckill_product
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from pms_seckill_product
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="model.PmsSeckillProduct" >
+    insert into pms_seckill_product (id, product_id, seckill_price, 
+      seckill_stock, start_date, end_date
+      )
+    values (#{id,jdbcType=BIGINT}, #{product_id,jdbcType=BIGINT}, #{seckill_price,jdbcType=DECIMAL}, 
+      #{seckill_stock,jdbcType=INTEGER}, #{start_date,jdbcType=TIMESTAMP}, #{end_date,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="model.PmsSeckillProduct" >
+    insert into pms_seckill_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="product_id != null" >
+        product_id,
+      </if>
+      <if test="seckill_price != null" >
+        seckill_price,
+      </if>
+      <if test="seckill_stock != null" >
+        seckill_stock,
+      </if>
+      <if test="start_date != null" >
+        start_date,
+      </if>
+      <if test="end_date != null" >
+        end_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="product_id != null" >
+        #{product_id,jdbcType=BIGINT},
+      </if>
+      <if test="seckill_price != null" >
+        #{seckill_price,jdbcType=DECIMAL},
+      </if>
+      <if test="seckill_stock != null" >
+        #{seckill_stock,jdbcType=INTEGER},
+      </if>
+      <if test="start_date != null" >
+        #{start_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_date != null" >
+        #{end_date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.PmsSeckillProduct" >
+    update pms_seckill_product
+    <set >
+      <if test="product_id != null" >
+        product_id = #{product_id,jdbcType=BIGINT},
+      </if>
+      <if test="seckill_price != null" >
+        seckill_price = #{seckill_price,jdbcType=DECIMAL},
+      </if>
+      <if test="seckill_stock != null" >
+        seckill_stock = #{seckill_stock,jdbcType=INTEGER},
+      </if>
+      <if test="start_date != null" >
+        start_date = #{start_date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_date != null" >
+        end_date = #{end_date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.PmsSeckillProduct" >
+    update pms_seckill_product
+    set product_id = #{product_id,jdbcType=BIGINT},
+      seckill_price = #{seckill_price,jdbcType=DECIMAL},
+      seckill_stock = #{seckill_stock,jdbcType=INTEGER},
+      start_date = #{start_date,jdbcType=TIMESTAMP},
+      end_date = #{end_date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

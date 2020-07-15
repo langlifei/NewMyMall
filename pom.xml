@@ -28,6 +28,8 @@
         <module>mall-product</module>
         <module>mall-search</module>
         <module>mall-cache</module>
+        <module>mall-common</module>
+        <module>mall-mgb</module>
     </modules>
 
     <dependencies>
